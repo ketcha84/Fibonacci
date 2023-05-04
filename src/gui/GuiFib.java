@@ -10,6 +10,7 @@ import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class GuiFib extends JFrame {
@@ -36,15 +37,11 @@ public class GuiFib extends JFrame {
     }
 
     private void generateSequence() {
-        long[] arr = FibNums.fibNums(Integer.valueOf(txtNum.getText()));
+        BigInteger[] arr = FibNums.fibNums(Integer.valueOf(txtNum.getText()));
         StringBuilder builder = new StringBuilder();
-        int count = 0;
+
         for (int i = 0; i < arr.length - 1; i++) {
-            builder.append(arr[i] + "; ");
-            if (++count == 15) {
-                builder.append("\n");
-                count = 0;
-            }
+            builder.append(arr[i] + "\n");
         }
         builder.append(arr[arr.length - 1]);
         txtGenNums.setText(builder.toString());
@@ -55,7 +52,7 @@ public class GuiFib extends JFrame {
     private void init() {
         add(rootPanel);
         setTitle("Fibonacci Numbers.");
-        setBounds(0, 0, 400, 300);
+        setBounds(0, 0, 800, 500);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
