@@ -8,10 +8,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class GuiFib extends JFrame {
     private JPanel rootPanel;
@@ -28,20 +25,15 @@ public class GuiFib extends JFrame {
     }
 
     private void initBtn() {
-        btn_gen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               generateSequence();
-            }
-        });
+        btn_gen.addActionListener(e -> generateSequence());
     }
 
     private void generateSequence() {
-        BigInteger[] arr = FibNums.fibNums(Integer.valueOf(txtNum.getText()));
+        BigInteger[] arr = FibNums.fibNums(Integer.parseInt(txtNum.getText()));
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < arr.length - 1; i++) {
-            builder.append(arr[i] + "\n");
+            builder.append(arr[i]).append("\n");
         }
         builder.append(arr[arr.length - 1]);
         txtGenNums.setText(builder.toString());
@@ -64,10 +56,10 @@ public class GuiFib extends JFrame {
     }
 
 
-    class DigitFilter extends DocumentFilter {
+    static class DigitFilter extends DocumentFilter {
         public static final String DECIMAL_DIGITS = "\\d+";
 
-        private String regEx;
+        private final String regEx;
 
         public DigitFilter() {
             this.regEx = DECIMAL_DIGITS;
