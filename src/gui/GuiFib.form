@@ -23,7 +23,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <toolTipText value="Enter Number"/>
+        </properties>
       </component>
       <component id="4c55" class="javax.swing.JButton" binding="btn_gen">
         <constraints>
@@ -31,6 +33,7 @@
         </constraints>
         <properties>
           <text value="Generate"/>
+          <toolTipText value="Click to generate sequence"/>
         </properties>
       </component>
       <scrollpane id="d5a7">
@@ -43,9 +46,10 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="647d3" class="javax.swing.JTextArea" binding="generatedNubersFibonacciTextArea" default-binding="true">
+          <component id="647d3" class="javax.swing.JTextArea" binding="txtGenNums">
             <constraints/>
             <properties>
+              <columns value="10"/>
               <editable value="true"/>
               <enabled value="true"/>
               <margin top="5" left="5" bottom="5" right="5"/>
